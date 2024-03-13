@@ -7,7 +7,7 @@ function NoteItem({ id, title, content, onDelete, onEdit }) {
       alert("Berhasil Mendelete")
     }
   }
-
+//ini berubah
   return (
     <div>
       <div className="note mt-5 m-9 w-[300px] p-4 py-10 relative rounded-lg drop-shadow-md bg-zinc-600 to-opacity-25 ">
