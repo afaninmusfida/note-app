@@ -10,7 +10,7 @@ function NoteItem({ id, title, content, onDelete, onEdit }) {
 
   return (
     <div>
-      <div className="note  border-sky-200 shadow-[0_0_2px_#fff,inset_0_0_2px_#fff,0_0_5px_#08f,0_0_15px_#08f,0_0_30px_#08f] mt-5 m-9 w-[300px] p-4 py-10 relative rounded-lg drop-shadow-md bg-zinc-600 to-opacity-25 ">
+      <div className="note mt-5 m-9 w-[300px] p-4 py-10 relative rounded-lg drop-shadow-md bg-zinc-600 to-opacity-25 ">
         <button
           onClick={() => handleDelete(id)}
           className="delete-note absolute right-2 top-0 font-bold text-2xl text-red-600">
