@@ -41,6 +41,7 @@ function App() {
                         <>
                             <Route path={"/Registrasi"} element={<Registrasi />} />
                             <Route path={"Login"} element={<Login onLogin={handleLogin} />} />
+                            <Route path="*" element={<Navigate to={"/Login"} />} />
                         </>)}
 
 
