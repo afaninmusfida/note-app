@@ -1,5 +1,5 @@
 import {createContext, useContext, useState } from "react"
-import { handleLogin } from "../Api"
+import { handleLogin, setTokens } from "../Api"
 
 //nilai default
 const initialAuthState = {
@@ -25,15 +25,19 @@ const AuthProvider = ({children}) =>  {
     const doLogin = async (email, password) => {
     //memanggil api dengan data email & password
     console.log(email, password)
+
     //memanggil menggunakan axios
     const apiresult = await handleLogin(email, password)
     console.log(apiresult)
+    console.log(apiresult.data.data.accessToken)
+
     //jika berhasil setisloggedin (true)
+    setIsLoggedin(true)
+    setTokens(apiresult.data.data.accessToken)
     //simpan token kedalam local storage
 
     //jika gagal tampilkan peringatan
     
-        setIsLoggedin(true)
     }
 
     const doLogout = () => {
