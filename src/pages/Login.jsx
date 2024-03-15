@@ -1,25 +1,30 @@
 import { useState } from "react";
 import { handleLogin } from "../Api";
 import {setTokens} from "../Api"
+import { useAuth } from "../context/Auth";
 
 function Login({ onLogin }) {
+    const {doLogin} = useAuth()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("");
 
+    // const handleClick = async () => {
+    //     const login = await handleLogin(email, password);
+    //     console.log(login.data.data.accesToken)
+    //     if(login.status === 200){
+    //         setEmail("")
+    //         setPassword("")
+    //         setTokens(login.data.data.accessToken)
+    //         onLogin(login.data.data.accessToken)
+    //         alert(login.data.message)
+    //    }else{
+    //     const {email=[],password=[]} = login.data.errors;
+    //     const err = [...email,...password];
+    //     alert(err.join("\n"));
+    //     }
+    // }
     const handleClick = async () => {
-        const login = await handleLogin(email, password);
-        console.log(login.data.data.accesToken)
-        if(login.status === 200){
-            setEmail("")
-            setPassword("")
-            setTokens(login.data.data.accessToken)
-            onLogin(login.data.data.accessToken)
-            alert(login.data.message)
-       }else{
-        const {email=[],password=[]} = login.data.errors;
-        const err = [...email,...password];
-        alert(err.join("\n"));
-        }
+        doLogin(email, password)
     }
 
     return (
