@@ -95,7 +95,7 @@ function Note() {
 
   const handleFetchData = async () => {
     const apiFetch = await tampilkan();
-    setNotes(apiFetch.data.data ?? null)
+    setNotes(apiFetch.data.data.notes ?? null)
   }
 
   const handleAddData = async (title, content) => {
@@ -122,7 +122,8 @@ function Note() {
   }
 
   useEffect(() => {
-    tampilkan()
+    // tampilkan()
+    handleFetchData()
   }, [])
 
 

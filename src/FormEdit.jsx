@@ -1,10 +1,11 @@
 
 import { useEffect, useState } from "react";
 
-export default function FormEdit({ onEdit, notes, onCancel, targetValue }) {
+export default function FormEdit({ onEdit, notes, onCancel, targetValue,}) {
     const [title, setTitle] = useState(targetValue !== null ? targetValue.title : null)
     const [note, setNotes] = useState(targetValue !== null ? targetValue.content : null)
     const [writer, setWriter] = useState(targetValue !== null ? targetValue.writer : null);
+    
 
     useEffect(() => {
         const noteToEdit = notes !== null ? notes.find((note) => note.id === targetValue.id) : null;
@@ -42,7 +43,7 @@ export default function FormEdit({ onEdit, notes, onCancel, targetValue }) {
                     className="input"
                     onChange={(e) => setTitle(e.target.value)} />
                 <textarea
-                    onChange={(e) => setNote(e.target.value)}
+                    onChange={(e) => setNotes(e.target.value)}
                     value={note}
                     name="note"
                     id=""
@@ -54,7 +55,7 @@ export default function FormEdit({ onEdit, notes, onCancel, targetValue }) {
 
                 <div className="btn flex place-content-between">
                     <button
-                        onClick={handleEditNote}
+                        onClick={handleEdit}
                         className="bg-blue-500 text-white text-lg rounded-lg px-5 py-3 mt-2" >
                         Edit Note
                     </button>

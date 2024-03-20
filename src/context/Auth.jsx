@@ -1,5 +1,5 @@
-import {createContext, useContext, useState } from "react"
-import { handleLogin, setTokens } from "../Api"
+import {createContext, useContext, useEffect, useState } from "react"
+import { getToken, handleLogin, removeToken, setTokens } from "../Api"
 
 //nilai default
 const initialAuthState = {
@@ -20,6 +20,13 @@ const useAuth = () => {
 const AuthProvider = ({children}) =>  {
     //state 
     const [isLoggedin, setIsLoggedin] = useState(false)
+
+    useEffect(() => {
+        const token = getToken()
+        if (token != null) {
+            setIsLoggedin(true)
+        }
+    },[])
 
     //function
     const doLogin = async (email, password) => {
@@ -42,6 +49,7 @@ const AuthProvider = ({children}) =>  {
 
     const doLogout = () => {
         setIsLoggedin(false)
+        removeToken()
     }
 
 //return

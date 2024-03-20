@@ -1,7 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import { useAuth } from "./context/Auth";
 
-export default function Layout({ token, onLogout, }) {
+export default function Layout() {
     const { isLoggedin } = useAuth()
     const { doLogout } = useAuth()
 
@@ -22,11 +22,19 @@ export default function Layout({ token, onLogout, }) {
             <Link to={"/login"} className="p-2 text-xl transition duration-300 ease-in-out hover:text-gray-400">Login</Link>
             <Link to={"/note"} className="p-2 text-xl transition duration-300 ease-in-out hover:text-gray-400">Note</Link> */}
                 </nav>
-                {token !== null ? null : <Link to={"/Registrasi"}><span className="p-2 text-xl transition duration-300 ease-in-out hover:text-gray-400">Registrasi</span></Link>}
+                {isLoggedin ? <>
+                    <Link to={"/Note"}><span className="p-2 text-xl transition duration-300 ease-in-out hover:text-gray-400">Notes</span></Link>
+                    <Link onClick={() => doLogout()}><span className="p-2 text-xl transition duration-300 ease-in-out hover:text-gray-400">Logout</span></Link></> 
+                    : 
+                    <><Link to={"/Registrasi"}><span className="p-2 text-xl transition duration-300 ease-in-out hover:text-gray-400">Registrasi</span></Link>
+                    <Link to={"/Login"}><span className="p-2 text-xl transition duration-300 ease-in-out hover:text-gray-400">Login</span></Link>
+                    <Link to={"/Login"}><span className="p-2 text-xl transition duration-300 ease-in-out hover:text-gray-400" onClick={handleClick}>Logout</span></Link></>}
+
+                {/* {token !== null ? null : <Link to={"/Registrasi"}><span className="p-2 text-xl transition duration-300 ease-in-out hover:text-gray-400">Registrasi</span></Link>}
                 {token !== null ? null : <Link to={"/Login"}><span className="p-2 text-xl transition duration-300 ease-in-out hover:text-gray-400">Login</span></Link>}
                 {token !== null ? null : <Link to={"/Login"}><span className="p-2 text-xl transition duration-300 ease-in-out hover:text-gray-400" onClick={handleClick}>Logout</span></Link>}
                 <Link to={"/Note"}><span className="p-2 text-xl transition duration-300 ease-in-out hover:text-gray-400">Notes</span></Link>
-                {/* {token !== null ? <Link onClick={() => onLogout()}><span className="p-2 text-xl transition duration-300 ease-in-out hover:text-gray-400">Logout</span></Link> : null} */}
+                {token !== null ? <Link onClick={() => doLogout()}><span className="p-2 text-xl transition duration-300 ease-in-out hover:text-gray-400">Logout</span></Link> : null} */}
             </div>
             <Outlet />
         </>

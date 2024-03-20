@@ -41,6 +41,9 @@ export const tampilkan = async () => {
   return notes;
 };
 
+export const removeToken = () => {
+  localStorage.removeItem('token')}
+
 export const addNote = async (title, content) => {
   const token = getToken();
   const noteBaru = {

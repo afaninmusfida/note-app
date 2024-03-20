@@ -10,7 +10,7 @@ function NoteItem({ id, title, content, onDelete, onEdit }) {
 //ini berubah
   return (
     <div>
-      <div className="note mt-5 m-9 w-[300px] p-4 py-10 relative rounded-lg drop-shadow-md bg-zinc-600 to-opacity-25 ">
+      <div className="note mt-5 m-9 w-[300px] p-4 py-10 relative rounded-lg drop-shadow-md bg-zinc-600 shadow-lg shadow-indigo-500/50 to-opacity-25 ">
         <button
           onClick={() => handleDelete(id)}
           className="delete-note absolute right-2 top-0 font-bold text-2xl text-red-600">
